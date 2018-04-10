@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.smsencryption.smsencryption"
+    android:versionCode="1"
+    android:versionName="1.0.0">
+
+    <uses-sdk tools:overrideLibrary="com.facebook.react, com.airbnb.android.react.maps" />
+
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/MaterialTheme">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD1HjCq07-RQ15Hgq0Jl2TzVYe7GIMj2Wo" />
+
+        <activity
+            android:name=".PhoneBookActivity"
+            android:label="PhoneBookActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".SmsReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="my.action.string" />
+                <action android:name="sendReceiverPhone" />
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".GenerateQRCodeActivity"
+            android:label="@string/title_activity_generate_qrcode"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddContact"
+            android:label="@string/title_activity_add_contact"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".QRCodeExchange"
+            android:label="@string/title_activity_qrcode_exchange"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SendMessageActivity"
+            android:label="@string/title_activity_send_message"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+
+</manifest>
